@@ -37,7 +37,7 @@ public class CommentController {
     }
 
     @GetMapping("/{postId}/comments/{commentId}")
-    public ResponseEntity<CommentDTO> getCommentById (
+    public ResponseEntity<CommentDTO> getCommentById(
             @PathVariable(value = "postId") long postId,
             @PathVariable(value = "commentId") long commentId
     ) {
@@ -45,8 +45,7 @@ public class CommentController {
     }
 
     @PutMapping("/{postId}/comments/{commentId}")
-    public ResponseEntity<CommentDTO> updateComment
-            (
+    public ResponseEntity<CommentDTO> updateComment(
             @RequestBody CommentDTO commentDTO,
             @PathVariable(value = "postId") long postId,
             @PathVariable(value = "commentId") long commentId

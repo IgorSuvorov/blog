@@ -16,7 +16,7 @@ import java.util.Date;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(PostNotFoundException.class)
-    public ResponseEntity<ErrorDetails> handlePostNotFoundException (
+    public ResponseEntity<ErrorDetails> handlePostNotFoundException(
        PostNotFoundException postNotFoundException,
        WebRequest webRequest
     ) {
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
   }
 
     @ExceptionHandler(CommentNotFoundException.class)
-    public ResponseEntity<ErrorDetails> handleCommentNotFoundException (
+    public ResponseEntity<ErrorDetails> handleCommentNotFoundException(
             CommentNotFoundException commentNotFoundException,
             WebRequest webRequest
     ) {
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorDetails> handleGlobalException (
+    public ResponseEntity<ErrorDetails> handleGlobalException(
             Exception exception,
             WebRequest webRequest
     ) { 

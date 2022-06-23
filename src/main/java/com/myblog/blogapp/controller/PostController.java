@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * @author Igor Suvorov
  */
@@ -25,7 +27,7 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<PostDTO> createPost (@RequestBody PostDTO postDTO) {
+    public ResponseEntity<PostDTO> createPost(@Valid @RequestBody PostDTO postDTO) {
         return new ResponseEntity<>(postService.createPost(postDTO), HttpStatus.CREATED);
     }
 
@@ -46,14 +48,14 @@ public class PostController {
 
     @PutMapping("/{id}")
     public ResponseEntity<PostDTO> updatePost(
-            @RequestBody PostDTO postDTO,
+            @Valid @RequestBody PostDTO postDTO,
             @PathVariable(name = "id") long id
     ) {
         return new ResponseEntity<>(postService.updatePost(postDTO, id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-        public ResponseEntity<String> deletePost( @PathVariable(name = "id") long id) {
+        public ResponseEntity<String> deletePost(@PathVariable(name = "id") long id) {
         postService.deletePost(id);
 
         return new ResponseEntity<>("Post has been successfully deleted.", HttpStatus.OK);

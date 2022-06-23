@@ -94,7 +94,7 @@ public class PostServiceImpl implements PostService {
         return postDTO;
     }
 
-    private Post mapDTOToEntity(PostDTO postDTO){
+    private Post mapDTOToEntity(PostDTO postDTO) {
         Post post = modelMapper.map(postDTO, Post.class);
 
         return post;
