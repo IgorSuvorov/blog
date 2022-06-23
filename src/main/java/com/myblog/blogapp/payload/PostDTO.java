@@ -16,15 +16,15 @@ public class PostDTO {
     private long id;
 
     @NotEmpty
-    @Size(min = 2, message = "Post title should have at least 2 characters.")
+    @Size(min = 2, message = "post title should have at least 2 characters")
     private String title;
 
     @NotEmpty
-    @Size(min = 5, message = "Post description should have at least 5 characters.")
+    @Size(min = 5, message = "post description should have at least 5 characters")
     private String description;
 
     @NotEmpty
-    @Size(min = 5, message = "Post content should have at least 2 characters.")
+    @Size(min = 5, message = "post content should have at least 2 characters")
     private String content;
 
     Set<CommentDTO> comments;
