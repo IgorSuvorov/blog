@@ -28,9 +28,6 @@ import java.util.Collections;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
-
     private AuthenticationManager authenticationManager;
 
     private UserRepository userRepository;
