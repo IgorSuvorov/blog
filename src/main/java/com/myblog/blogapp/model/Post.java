@@ -22,9 +22,7 @@ import java.util.Set;
 public class Post {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.IDENTITY
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title", nullable = false)
@@ -36,6 +34,7 @@ public class Post {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Column(name = "comments")
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Comment> comments = new HashSet<>();
 }
