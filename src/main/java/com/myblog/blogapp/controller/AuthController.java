@@ -6,6 +6,7 @@ import com.myblog.blogapp.payload.LoginDTO;
 import com.myblog.blogapp.payload.SignupDTO;
 import com.myblog.blogapp.repository.RoleRepository;
 import com.myblog.blogapp.repository.UserRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ import java.util.Collections;
  * @author Igor Suvorov
  */
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
@@ -49,18 +50,7 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDTO) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginDTO.getUserNameOrEmail(),
-                        loginDTO.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        return new ResponseEntity<>("User signed-in successfully!", HttpStatus.OK);
-    }
-
+    @ApiOperation(value = "REST API to Register or Signup user to Blog app")
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignupDTO signupDTO) {
         if (userRepository.existsByUserName(signupDTO.getUserName())) {
@@ -85,5 +75,18 @@ public class AuthController {
         userRepository.save(user);
 
         return new ResponseEntity<>("User has ben successfully registered!", HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "REST API to Signin or Login user to Blog app")
+    @PostMapping("/signin")
+    public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDTO) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginDTO.getUserNameOrEmail(),
+                        loginDTO.getPassword()));
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return new ResponseEntity<>("User signed-in successfully!", HttpStatus.OK);
     }
 }
