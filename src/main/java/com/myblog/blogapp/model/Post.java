@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Igor Suvorov
  */
 
-// здесь нельзя использовать @Data потому что тогда mapper не будет работать из-за toString он в видео 60. Refactoring GetPostById and GetAllPosts REST API это объясняет
+// здесь нельзя использовать @Data потому что тогда mapper не будет работать из-за toString
 @Getter
 @Setter
 @AllArgsConstructor

@@ -35,7 +35,6 @@ public class SecurityConfig {
         this.authenticationEntryPoint = authenticationEntryPoint;
     }
 
-
     @Bean
     public JWTAuthenticationFilter jwtAuthenticationFilter(){
         return  new JWTAuthenticationFilter();
